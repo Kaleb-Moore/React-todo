@@ -12,12 +12,12 @@ export default function TodoForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // props.onSubmit({
-    //     id: nanoid(),
-    //     text: input
-    // });
+    props.onSubmit({
+        id: nanoid(),
+        text: input
+    });
 
-    setInput('')
+    setInput('');
   }
 
   return (
