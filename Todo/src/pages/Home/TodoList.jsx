@@ -7,7 +7,6 @@ export default function TodoList() {
     const [todos, setTodos] = useState([]);
 
     function addTodo(todo) {
-
         if(!todo.text || /^\s*$/.test(todo.text)) {
             return
         }
@@ -25,6 +24,20 @@ export default function TodoList() {
             return todo;
         });
         setTodos(updateTodos);
+    };
+
+    function removeTodo(id) {
+        const removeArr = [...todos].filter(todo => todo.id !== id);
+
+        setTodos(removeArr);
+    };
+
+    function updateTodo(id, newValue) {
+        if(!newValue.text || /^\s*$/.test(newValue.text)) {
+            return
+        }
+
+        setTodos(prev => prev.map(todo => (todo.id === id ? newValue : todo)))
     }
 
     return (
@@ -34,6 +47,8 @@ export default function TodoList() {
             <Todo 
                 todos={todos}
                 completeTodo={completeTodo}
+                removeTodo={removeTodo}
+                updateTodo={updateTodo}
             />
         </div>
     )
