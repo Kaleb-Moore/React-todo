@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {nanoid} from 'nanoid'
 import Button from '../../components/form/Button.jsx'
 
 export default function TodoForm(props) {
   const [input, setInput] = useState("");
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  })
 
   function handleChange(e) {
     setInput(e.target.value)
@@ -35,6 +41,7 @@ export default function TodoForm(props) {
           name="text"
           className="todo-input"
           onChange={handleChange}
+          ref={inputRef}
         />
         <Button name="Add todo" />
       </form>
