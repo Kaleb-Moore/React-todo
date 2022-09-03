@@ -26,6 +26,7 @@ export default function TodoForm(props) {
         action=""
         className="todo-form"
         onSubmit={handleSubmit}
+        autoComplete="off"
       >
         <input
           type="text"
