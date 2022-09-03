@@ -3,7 +3,7 @@ import {nanoid} from 'nanoid'
 import Button from '../../components/form/Button.jsx'
 
 export default function TodoForm(props) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
   const inputRef = useRef(null);
 
@@ -34,16 +34,34 @@ export default function TodoForm(props) {
         onSubmit={handleSubmit}
         autoComplete="off"
       >
-        <input
-          type="text"
-          placeholder="Add a todo"
-          value={input}
-          name="text"
-          className="todo-input"
-          onChange={handleChange}
-          ref={inputRef}
-        />
-        <Button name="Add todo" />
+        {props.edit ? (
+          <>
+            <input
+            type="text"
+            placeholder="Update your Todo"
+            value={input}
+            name="text"
+            className="todo-input edit"
+            onChange={handleChange}
+            ref={inputRef}
+            />
+            <Button name="Update" class={"edit"} />
+          </>
+        ) : (
+          <>
+            <input
+            type="text"
+            placeholder="Add a todo"
+            value={input}
+            name="text"
+            className="todo-input"
+            onChange={handleChange}
+            ref={inputRef}
+            />
+            <Button name="Add todo" />
+          </>
+        )}
+        
       </form>
     </div>
   );
