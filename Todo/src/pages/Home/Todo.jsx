@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import TodoForm from './TodoForm'
 import {RiCloseCircleLine} from 'react-icons/ri'
 import {TiEdit} from 'react-icons/ti'
 import Button from '../../components/form/Button';
 
 export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
+
 
     const [edit, setEdit] = useState({
         id: null,
@@ -16,17 +16,16 @@ export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
             id: prevEdit.id,
             value: e.target.value
         }))
-        console.log(edit)
     }
 
     function submitUpdate(e) {
         e.preventDefault();
+        console.log(edit);
         updateTodo(edit) 
         setEdit({
             id: null,
             value: ''
         })
-        console.log(edit);
     }
 
     if (edit.id) {
@@ -39,8 +38,9 @@ export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
                 name="text"
                 className="sidebar-form-input"
                 onChange={handleChange}
+                autoFocus
                 />
-                <Button name="Add Todo" class={"sidebar-addtodo-btn "} />
+                <Button name="Update" class={"sidebar-addtodo-btn "} />
             </form>
         )
     }
@@ -48,7 +48,7 @@ export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
     return todos.map((todo, index) => (
         <div className={todo.isComplete ? 'todo-row complete' : "todo-row"} key={index}>
             <div key={todo.id} onClick={() => completeTodo(todo.id)} className="todo-text">
-                {todo.text}
+                {todo.value}
             </div>
             <div className="todo-list-icons">
                 <RiCloseCircleLine 
@@ -56,7 +56,7 @@ export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
                     className="delete-icon"
                 />
                 <TiEdit 
-                    onClick={() => setEdit({id: todo.id, value: todo.text})} 
+                    onClick={() => setEdit({id: todo.id, value: todo.value})} 
                     className="update-icon"
                 />
             </div>

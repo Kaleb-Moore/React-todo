@@ -20,7 +20,7 @@ export default function TodoForm(props) {
 
     props.onSubmit({
         id: nanoid(),
-        text: input
+        value: input
     });
 
     setInput('');

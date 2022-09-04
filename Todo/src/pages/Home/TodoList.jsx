@@ -6,7 +6,7 @@ export default function TodoList() {
     const [todos, setTodos] = useState([]);
 
     function addTodo(todo) {
-        if(!todo.text || /^\s*$/.test(todo.text)) {
+        if(!todo.value || /^\s*$/.test(todo.value)) {
             return
         }
 
@@ -32,12 +32,11 @@ export default function TodoList() {
     };
 
     function updateTodo(todo) {
-        console.log(todos)
-        if(!todo.text || /^\s*$/.test(todo.text)) {
+        if(!todo.value || /^\s*$/.test(todo.value)) {
             return
         }
-
-        setTodos(prev => prev.map(item => (item.id === todo.id ? todo.text : item)))
+        setTodos(prev => prev.map(item => (item.id === todo.id ? todo : item)))
+        console.log(todos)
     }
 
     return (
