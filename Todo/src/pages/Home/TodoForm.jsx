@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {nanoid} from 'nanoid'
-import Button from '../../components/form/Button.jsx'
+import SideBar from "../../components/ui/SideBar.jsx";
 
 export default function TodoForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
@@ -27,42 +27,11 @@ export default function TodoForm(props) {
   }
 
   return (
-    <div>
-      <form
-        action=""
-        className="todo-form"
-        onSubmit={handleSubmit}
-        autoComplete="off"
-      >
-        {props.edit ? (
-          <>
-            <input
-            type="text"
-            placeholder="Update your Todo"
-            value={input}
-            name="text"
-            className="todo-input edit"
-            onChange={handleChange}
-            ref={inputRef}
-            />
-            <Button name="Update" class={"edit"} />
-          </>
-        ) : (
-          <>
-            <input
-            type="text"
-            placeholder="Add a todo"
-            value={input}
-            name="text"
-            className="todo-input"
-            onChange={handleChange}
-            ref={inputRef}
-            />
-            <Button name="Add todo" />
-          </>
-        )}
-        
-      </form>
-    </div>
+    <SideBar 
+      inputRef={inputRef} 
+      input={input} 
+      handleChange={handleChange} 
+      handleSubmit={handleSubmit} 
+    />
   );
 }
