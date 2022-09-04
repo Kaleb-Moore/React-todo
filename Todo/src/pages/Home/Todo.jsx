@@ -30,7 +30,7 @@ export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
 
     if (edit.id) {
         return (
-            <form className='sidebar-form' autoComplete='off' onSubmit={submitUpdate}>
+            <form className='sidebar-form-update' autoComplete='off' onSubmit={submitUpdate}>
                 <input
                 type="text"
                 placeholder="What do you need to do?"
@@ -40,7 +40,7 @@ export default function Todo({todos, completeTodo, removeTodo, updateTodo}) {
                 onChange={handleChange}
                 autoFocus
                 />
-                <Button name="Update" class={"sidebar-addtodo-btn "} />
+                <Button name="Update" class={"sidebar-update-btn "} />
             </form>
         )
     }

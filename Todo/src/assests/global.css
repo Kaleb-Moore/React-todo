@@ -10,24 +10,52 @@ body {
     color: #451740;
 }
 
+::-webkit-scrollbar {
+    width: .75em;
+}
+
+::-webkit-scrollbar-track {
+    background: #C542B7;
+    border-radius: 100vw;
+    margin-block: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #451740;
+    border: .2em solid #C542B7;
+    border-radius: 100vw;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .app-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    margin: 74px 114px;
     background-color: #F2F2F2;
     border-radius: 15px;
+    min-width: 770px;
 }
 
 .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
     background-color: #C542B7;
     max-width: 545px;
-    height: 80vh;
+    min-height: 80vh;
     border-radius: 15px 0 0 15px;
 }
 
 .sidebar-logout {
-    margin: 25px 0 0 25px;
     max-width: 72px;
+    margin: 24px 0 0 24px;
+    align-self: flex-start;
     height: 34px;
     font-size: 16px;
     font-weight: 700;
@@ -44,9 +72,6 @@ body {
 }
 
 .sidebar-title {
-    margin-top: 91px;
-    margin-left: 104px;
-    margin-right: 104px;
     font-size: 62px;
     font-weight: 700;
     color: #F2F2F2;
@@ -54,7 +79,6 @@ body {
 
 .sidebar-tagline {
     margin-top: 8px;
-    margin-left: 143px;
     color: #F2F2F2;
     font-size: 16px;
     font-weight: 700;
@@ -62,7 +86,6 @@ body {
 
 .sidebar-addtodo {
     margin-top: 105px;
-    margin-left: 199px;
     font-size: 32px;
     font-weight: 700;
     color: #F2F2F2;
@@ -75,6 +98,25 @@ body {
     align-items: center;
 }
 
+.sidebar-form-update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.sidebar-update-btn {
+    width: 120px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #C542B7;
+    color: #451740;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid #451740;
+}
+
 .sidebar-form-input {
     margin-top: 20px;
     width: 400px;
@@ -82,6 +124,7 @@ body {
     border-radius: 10px;
     border: none;
     text-indent: 18px;
+    margin: 0 24px;
 }
 .sidebar-form-input::placeholder {
     font-size: 16px;
@@ -109,8 +152,10 @@ body {
 .todo-container {
     display: flex;
     flex-direction: column;
-    gap: 35px;
-    justify-content: center;
+    justify-content: flex-start;
+    height: 775px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .todo-row {
@@ -119,7 +164,7 @@ body {
     justify-content: space-between;
     background-color: #C542B7;
     padding: 20px 35px;
-    margin: 0 112px;
+    margin: 24px 112px;
     border-radius: 10px;
 }
 
@@ -142,4 +187,53 @@ body {
 .complete {
     text-decoration: line-through;
     opacity: 0.6;
-  }
+}
+
+
+@media (max-width: 1024px) {
+    
+    main {
+        align-items: normal;
+        height: 0;
+    }
+    
+    .app-container {
+        display: block;
+        min-width: 80%;
+        max-height: 80%;
+        margin: 24px 0;
+        border-radius: 15px;
+        height: 100%;
+        min-width: none;
+    }
+    
+    .sidebar-container {
+        gap: 0;
+        max-width: none;
+        min-height: 0;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    .sidebar-addtodo {
+        margin-top: 45px;
+    }
+    
+    .sidebar-form {
+        flex-direction: row;
+        margin-top: 24px;
+        margin-bottom: 45px;
+    }
+    
+    .sidebar-addtodo-btn {
+        margin-top: 0;
+    }
+    
+    .todo-container {
+        display: block;
+        height: 57vh;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    
+    
+}
