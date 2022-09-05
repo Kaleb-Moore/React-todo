@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
+import useLocalStorage from '../../hooks/useLocalStorage';
 import Todo from './Todo';
 import TodoForm from './TodoForm'
 
 export default function TodoList() {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useLocalStorage('todos', []);
 
     function addTodo(todo) {
         if(!todo.value || /^\s*$/.test(todo.value)) {
