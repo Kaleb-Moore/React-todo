@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ThemeContext } from '../../pages/Home/App'
 import Button from '../form/Button'
+import ReactSwitch from 'react-switch'
 
 export default function SideBar({handleSubmit, input, handleChange, inputRef}) {
+
+  const {theme, toggleTheme} = useContext(ThemeContext)
+
   return (
     <div className="sidebar-container">
-        <Button name="Logout" class="sidebar-logout " />
         <h1 className='sidebar-title'>Hello, <span className='secondary-color'>User</span></h1>
         <p className='sidebar-tagline'>Welcome back to your Todo List</p>
 
@@ -21,7 +25,8 @@ export default function SideBar({handleSubmit, input, handleChange, inputRef}) {
           />
           <Button name="Add Todo" class={"sidebar-addtodo-btn "} />
         </form>
-          
+
+        <ReactSwitch className='react-switch-bg' onChange={toggleTheme} checked={theme === "dark"} />
     </div>
   )
 }
